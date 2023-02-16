@@ -1,5 +1,5 @@
 ## Automation install docker
 
-``shell
+```shell
 ./install_docker.sh
 ```
