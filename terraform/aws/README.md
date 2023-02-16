@@ -12,6 +12,8 @@ What will installed on this script its
 **1. Change aws access key**
 
 craete from here [IAM Dashboard](https://console.aws.amazon.com/iam/)
+
+**terraform.tfvars**
 ```shell
 access_key = "aws_acces_key" # change to yours aws access key
 secret_key = "aws_secret_key" # change to yours aws secret_key
@@ -22,6 +24,7 @@ secret_key = "aws_secret_key" # change to yours aws secret_key
 
 open EC2 Instance [dashboard](https://console.aws.amazon.com/ec2/home) go to menu tab `Network & security` you will find `key` tab menu click and create new key pair
 
+**variable.tf**
 ```shell
 variable "ami_key_pair_name" {
         default = "terraform-key" # change terraform-key to your key
