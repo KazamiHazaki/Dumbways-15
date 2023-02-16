@@ -66,8 +66,20 @@ Its will show you the out put of `IP Public & ID Instance` that created by terra
 
 ![image](https://user-images.githubusercontent.com/56806850/219322584-850139c8-4989-4e3c-bf2c-79d366f92075.png)
 
+**5. Check docker installation**
 
-**5. To Delete all instance and security group that installed by terraform** 
+login using SSH to your instance and check if its installation script already finished or not 
+
+```shell
+tail -f /var/log/cloud-init-cloud.log
+```
+if installation already finished relog SSH and check docker 
+
+```shell
+dcoker -v
+```
+
+**6. To Delete all instance and security group that installed by terraform** 
 
 ```shell
 terraform destroy
