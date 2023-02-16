@@ -60,9 +60,9 @@ output "instance_public_ip" {
    value = aws_instance.ec2_instance.public_ip
 }
 ```
+
 Its will show you the out put of `IP Public & ID Instance` that created by terraform
 
-`output`
 
 ![image](https://user-images.githubusercontent.com/56806850/219322584-850139c8-4989-4e3c-bf2c-79d366f92075.png)
 
