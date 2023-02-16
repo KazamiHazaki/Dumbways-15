@@ -1,4 +1,4 @@
-# Terraform with docker installation
+# Terraform - AWS EC2 with docker installation
 
 What will installed on this script its
 - Ubuntu 20.04
