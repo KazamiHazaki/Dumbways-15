@@ -7,5 +7,5 @@ sudo apt update
 sudo apt install docker-ce -y
 sudo usermod -aG docker ubuntu > /tmp/docker-log.txt
 sudo systemctl status docker > /tmp/cek-group.txt
-sudo docker pull hello-worldclear
+sudo docker pull hello-world
 sudo docker run hello-world
