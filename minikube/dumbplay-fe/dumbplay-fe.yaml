@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dumbplay-fe-svc
+  labels:
+    app: dumbplay-fe
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 3000
+  selector:
+    app: dumbplay-fe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dumbplay-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dumbplay-fe
+  template:
+    metadata:
+      labels:
+        app: dumbplay-fe
+    spec:
+      containers:
+      - name: dumbplay-fe
+        image: kazamisei98/dumbplay-fe-slim:0.1
+        stdin: true
+        stdinOnce: false
+        tty: true
+        ports:
+        - containerPort: 3000
