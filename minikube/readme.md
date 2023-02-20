@@ -151,6 +151,8 @@ run `tunnel` on another terminal to open access, and dont close it. if the tunne
 ```shell
 minikube tunnel
 ```
+because we are exposing port 80, minikube will asked for password root, enter your password and you can access it
+
 ![image](https://user-images.githubusercontent.com/56806850/220160761-aab1ad38-bcea-4522-b35f-5dd29d267b9f.png)
 
 because we are running on local machine and its doesn't have public IP its will automatic using localhost
