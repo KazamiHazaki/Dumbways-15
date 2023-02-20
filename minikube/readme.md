@@ -115,6 +115,7 @@ minikube service nginx-app --namespace=nginx-test --url
 
 ![image](https://user-images.githubusercontent.com/56806850/220158525-1b2b9517-9250-4c44-a720-0e571a051a49.png)
 
+**NOTE:DONT CLOSE IT,OR ITS WILL TERMINATED YOUR TUNNNEL TO NGINX**
 
 then you can access with link that created by minikube `http://127.0.0.1:43611` open in your browser or use curl in `another terminal`
 
@@ -128,4 +129,35 @@ curl http://127.0.0.1:43611
 
 ![image](https://user-images.githubusercontent.com/56806850/220159264-95ff1d5b-c1cf-491b-93f0-f71de76f1b38.png)
 
+
+## Using LoadBalancer
+
+this is have same method to expose like NodePort
+
+create service
+
+```shell
+kubectl expose deployment --namespace=nginx-test nginx-app --type=LoadBalancer --port=80
+```
+
+![image](https://user-images.githubusercontent.com/56806850/220160326-830c96ea-a139-4c4b-8794-fa39727a548b.png)
+
+
+run `tunnel` on another terminal to open access, and dont close it. if the tunnel not open external IP will show status as `pending`
+
+![image](https://user-images.githubusercontent.com/56806850/220161421-f917e5be-b068-46de-97ba-95ced623c079.png)
+
+
+```shell
+minikube tunnel
+```
+![image](https://user-images.githubusercontent.com/56806850/220160761-aab1ad38-bcea-4522-b35f-5dd29d267b9f.png)
+
+because we are running on local machine and its doesn't have public IP its will automatic using localhost
+
+![image](https://user-images.githubusercontent.com/56806850/220161264-4cee67c9-7662-4fc2-b5cb-6cca3641767e.png)
+
+then we can access it directly to `localhost`
+
+![image](https://user-images.githubusercontent.com/56806850/220162925-d78ef822-2e2c-427a-bb6d-dfc810c29ff5.png)
 
