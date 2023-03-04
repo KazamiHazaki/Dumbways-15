@@ -139,7 +139,7 @@ to use docker compose run
 
 ```shell
 docker compose up -d
-``
+```
 
 
 
