@@ -1,0 +1,27 @@
+---
+- hosts: monitoring
+  gather_facts: no
+
+  tasks:
+    - name: create directory
+      ansible.builtin.file:
+        path: /home/aziz/grafana
+        state: directory
+        mode: '0755'
+
+    - name: Copy docker compose
+      ansible.builtin.copy:
+        src: file/compose-grafana.yml
+        dest: /home/aziz/grafana/docker-compose.yml
+        remote_src: false
+
+    - name: Copy prometheus.yml
+      ansible.builtin.copy:
+        src: file/prometheus.yml
+        dest: /home/aziz/grafana/prometheus.yml
+        remote_src: false
+    
+    - name: deploy grafana
+      community.docker.docker_compose:
+        project_src: /home/aziz/grafana
+        state: present
