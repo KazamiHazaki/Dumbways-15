@@ -26,4 +26,11 @@ after create destination host, we can craete ansible script.
 
 ansible script is crated with `yaml` format file.
 
+- [install-docker.yml](https://github.com/KazamiHazaki/Dumbways-15/blob/main/ansible/install-docker.yml)
 
+after create script run with
+```shell
+ansible-playbook install-docker.yml -i hosts
+```
+
+`-i`  is for hosts destination we created before
