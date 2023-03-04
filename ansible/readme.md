@@ -28,6 +28,16 @@ ansible script is crated with `yaml` format file.
 
 - [install-docker.yml](https://github.com/KazamiHazaki/Dumbways-15/blob/main/ansible/install-docker.yml)
 
+before run you need to change username on user builtin ansible
+
+```shell
+ - name: add group docker
+      ansible.builtin.user:
+       name: aziz # --> change to your username
+       groups: docker
+       append: yes
+```
+
 after create script run with
 ```shell
 ansible-playbook install-docker.yml -i hosts
