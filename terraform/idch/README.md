@@ -1,4 +1,4 @@
-this script will install 2 VPS 
+this script will install 4 VPS 
 
 Region Singapore 
 
