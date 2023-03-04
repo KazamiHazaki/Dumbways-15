@@ -1,0 +1,19 @@
+version: '3.8'
+   
+services:
+  prometheus:
+    image: bitnami/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    stdin_open: true
+    ports:
+      - 9090:9090
+    volumes:
+      - /home/aziz/grafana/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    stdin_open: true
+    ports:
+      - 3000:3000
