@@ -34,3 +34,8 @@ ansible-playbook install-docker.yml -i hosts
 ```
 
 `-i`  is for hosts destination we created before
+
+if there is no error when run script, its will showing like this. its mean installing success 
+
+![Screenshot 2023-02-27 at 10 55 45](https://user-images.githubusercontent.com/56806850/222883532-6a3b606c-7c37-4c07-b90b-5855d98247d2.png)
+
