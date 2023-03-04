@@ -2,7 +2,7 @@ this script will install 4 VPS
 
 Region Singapore 
 
-- appserver - 2 CPU, 2GB RAM, 20GB Storage
+- appserver - 2 CPU, 2GB RAM, 20GB Storage"idcloudhost_vm"
 - gateway - 1 CPU, 1GB RAM, 20GB Storage
 - jenkins/cicd - 2 CPU, 2 GB RAM, 20 GB storage
 - monitoring - 2 cpu, 2 GB Ram, 20 GB storage
@@ -11,6 +11,8 @@ you need to change value of
 - public_key
 - billing_account_id
 - auth_token
+
+to change resource name, change value after "idcloudhost_floating_ip" or "idcloudhost_vm" to your own resource name
 
 
 
