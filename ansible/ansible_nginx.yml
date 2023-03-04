@@ -1,0 +1,32 @@
+---
+- hosts: gateway
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: Install nginx
+      apt:
+        pkg:
+          - nginx
+        state: latest
+        update_cache: true
+      tags:
+        - install
+  
+    - name: copy reverse conf
+      ansible.builtin.copy:
+        src: file/reverse.conf
+        dest: /etc/nginx/conf.d/reverse.conf
+        remote_src: false
+      tags:
+        - copy
+        
+    - name: restart nginx
+      ansible.builtin.systemd:
+        state: restarted
+        name: nginx
+      tags:
+        - restart
+    
+    
+  
