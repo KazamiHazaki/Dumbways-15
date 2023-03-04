@@ -15,4 +15,13 @@ after paste password you will asked for installation type,select suggested plugi
 
 ![image](https://user-images.githubusercontent.com/56806850/222907104-4b36dc5d-239f-4131-bc55-97dafc8a9b41.png)
 
+and create user login 
+
+![image](https://user-images.githubusercontent.com/56806850/222908745-0195d936-bd75-4097-9e61-3c6a5753aec9.png)
+
+# Create user
+
+after login to dashboard  create new user, go to credentials, and add new 
+
+![image](https://user-images.githubusercontent.com/56806850/222913427-c8a6978c-abd5-4e89-953c-0dd7a1aba5ab.png)
 
