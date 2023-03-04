@@ -2,9 +2,9 @@ this script will install 4 VPS
 
 Region Singapore 
 
-appserver - 2 CPU, 2GB RAM, 20GB Storage
-gateway - 1 CPU, 1GB RAM, 20GB Storage
-jenkins - 1 CPU, 2 GB RAM, 20 GB storage
+- appserver - 2 CPU, 2GB RAM, 20GB Storage
+- gateway - 1 CPU, 1GB RAM, 20GB Storage
+- jenkins - 1 CPU, 2 GB RAM, 20 GB storage
 
 you need to change value of 
 - public_key
