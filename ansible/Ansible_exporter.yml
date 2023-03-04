@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: create directory
+      ansible.builtin.file:
+        path: /home/aziz/node-exporter
+        state: directory
+        mode: '0755'
+
+    - name: Copy docker compose
+      ansible.builtin.copy:
+        src: file/compose-node-exporter.yml
+        dest: /home/aziz/node-exporter/docker-compose.yml
+        remote_src: false
+    
+    - name: deploy node-exporter
+      community.docker.docker_compose:
+        project_src: /home/aziz/node-exporter
+        state: present
