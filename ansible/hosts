@@ -1,0 +1,8 @@
+[servers]
+appserver ansible_host=127.0.0.1 ansible_user=one
+cicd ansible_host=127.0.0.2 ansible_user=two
+gateway ansible_host=127.0.0.3 ansible_user=three
+monitoring ansible_host=127.0.0.4 ansible_user=four
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
