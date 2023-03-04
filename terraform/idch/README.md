@@ -4,7 +4,8 @@ Region Singapore
 
 - appserver - 2 CPU, 2GB RAM, 20GB Storage
 - gateway - 1 CPU, 1GB RAM, 20GB Storage
-- jenkins - 1 CPU, 2 GB RAM, 20 GB storage
+- jenkins/cicd - 2 CPU, 2 GB RAM, 20 GB storage
+- monitoring - 2 cpu, 2 GB Ram, 20 GB storage
 
 you need to change value of 
 - public_key
