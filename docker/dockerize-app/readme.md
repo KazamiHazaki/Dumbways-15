@@ -73,7 +73,10 @@ docker run -p 3000:3000 YOUR_IMAGE_NAME
 
 and then we are ready to create using docker images 
 
-![image](https://user-images.githubusercontent.com/56806850/222890547-9a5e2f7c-8c9d-4c8f-b666-0d1098c2a982.png)
+if success you will show something like this 
+
+![image](https://user-images.githubusercontent.com/56806850/222891026-5c975363-cd88-48d6-a9d8-97b3f5821ba1.png)
+
 
 
 # DOCKER HUB
@@ -87,9 +90,7 @@ docker login
 
 fill your username and password.
 
-if success you will show something like this 
 
-![image](https://user-images.githubusercontent.com/56806850/222891026-5c975363-cd88-48d6-a9d8-97b3f5821ba1.png)
 
 before upload to docker hub you need to change docker images name with username/newname:tag
 
