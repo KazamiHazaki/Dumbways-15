@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: all  # --> targeting to all target in hostsfile, change it to `monitoring` just targeting 1 hosts with named monitoring on hosts file
   become: true
   gather_facts: no
 
@@ -39,7 +39,7 @@
     
     - name: add group docker
       ansible.builtin.user:
-       name: aziz
+       name: aziz  # --> change to your username
        groups: docker
        append: yes
 
