@@ -76,6 +76,70 @@ and then we are ready to create using docker images
 ![image](https://user-images.githubusercontent.com/56806850/222890547-9a5e2f7c-8c9d-4c8f-b666-0d1098c2a982.png)
 
 
+# DOCKER HUB
+
+after Success create images from Dockerfile we can upload to docker hub, so we can easy use it everywhere. first you need to login docker hub using your account 
+
+
+```shell
+docker login
+```
+
+fill your username and password.
+
+if success you will show something like this 
+
+![image](https://user-images.githubusercontent.com/56806850/222891026-5c975363-cd88-48d6-a9d8-97b3f5821ba1.png)
+
+before upload to docker hub you need to change docker images name with username/newname:tag
+
+
+```shell
+docker tag test-fe DOCKER_USERNAME/dumb-be:1
+```
+
+![image](https://user-images.githubusercontent.com/56806850/222891358-42ae2cea-1101-43bf-90b1-d973db339991.png)
+
+then you can push your image to docker hub 
+
+```shell
+docker push DOCKER_USERNAME/dumb-be:1
+```
+
+![image](https://user-images.githubusercontent.com/56806850/222891809-36a28199-2182-4396-96c2-8f813459c13b.png)
+
+
+# Using Docker-compose
+
+ we will run application docker  with script its docker compose. to use it follow script below
+ 
+ ```yaml
+version: '3.3'
+services:
+ dumbmerch-fe:
+   container_name: dumbmerch-fe
+   image: dumbmerch-fe-slim:1
+   stdin_open: true
+   ports:
+     - 3000:3000
+   restart: always
+   volumes:
+     - ~/fe-dumbmerch/src/config/api.js:/dumbmerch-fe/src/config/api.js # create link to local file
+ ```
+
+from this script its will create 
+container named `dumbmerch-fe` 
+using image `dumbmerch-fe-slim:1` 
+then `stidn_open` to interact with container
+with ports container `3000` and app `3000`
+restart policy `always` its will always restart if docker stopped
+volumes create link between local machine folder and container folder
+
+to use docker compose run 
+
+```shell
+docker compose up -d
+``
 
 
 
