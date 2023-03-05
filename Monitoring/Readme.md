@@ -78,7 +78,17 @@ on C query we will make it as condition alert so if B > 4 alert will trigger
 ![image](https://user-images.githubusercontent.com/56806850/222944446-6d6dc092-c018-4a5a-87e7-2b7cedfefbd0.png)
 
 
+we will make other alert  like RAM alert and Disk alert
+
+`Ram Alert`
+```shell
+(node_memory_MemTotal_bytes{instance="103.67.186.181:9100",job="appserver-exporter"} - node_memory_MemFree_bytes{instance="103.67.186.181:9100",job="appserver-exporter"} - (node_memory_Cached_bytes{instance="103.67.186.181:9100",job="appserver-exporter"} + node_memory_Buffers_bytes{instance="103.67.186.181:9100",job="appserver-exporter"} + node_memory_SReclaimable_bytes{instance="103.67.186.181:9100",job="appserver-exporter"})) / 1073741824
+```
 
 
+`Disk Alert`
+```shell
+(node_filesystem_size_bytes{job="appserver-exporter", fstype="ext4"} / 1073741824) - (node_filesystem_free_bytes{job="appserver-exporter", fstype="ext4"} / 1073741824) 
+```
 
 
