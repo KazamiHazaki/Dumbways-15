@@ -1,8 +1,20 @@
 ## 1. [Install Nginx & Reverse Proxy](https://github.com/KazamiHazaki/Dumbways-15/blob/main/nginx/install_nginx_reverse.md)
 ## 2. [Install NGINX on Docker](https://github.com/KazamiHazaki/Dumbways-15/blob/main/nginx/Nginx_on_docker.md)
 
+## 3 . Configure Nginx and install Certbot
 
-add file configuration to /etc/nginx/conf.d
+add IP from server gateway or installed nginx to cloudflare
+
+![image](https://user-images.githubusercontent.com/56806850/222945185-bb6c5fee-ee53-4f03-acb6-ed56b48710d6.png)
+
+we create 2 DNS record 
+
+- aziz
+- *.aziz
+
+the second dns record `*.aziz` its mean wildcard, so we dont need to add another dns record again, its will automaticly add to dns record
+
+then add file configuration to /etc/nginx/conf.d
 
 ```shell
 server {
