@@ -1,6 +1,8 @@
 Application https://github.com/KazamiHazaki/fe-dumbmerch
 
-# DOCKERFILE
+# Frontend 
+
+### DOCKERFILE
 
 in this section i am will create dockerize app from dumbmerch-frontend, this application using nodeJS. so start with make new docker images using NodeJS image.
 
@@ -81,7 +83,7 @@ if success you will show something like this
 
 
 
-# DOCKER HUB
+### DOCKER HUB
 
 after Success create images from Dockerfile we can upload to docker hub, so we can easy use it everywhere. first you need to login docker hub using your account 
 
@@ -112,7 +114,7 @@ docker push DOCKER_USERNAME/dumb-be:1
 ![image](https://user-images.githubusercontent.com/56806850/222891809-36a28199-2182-4396-96c2-8f813459c13b.png)
 
 
-# Using Docker-compose
+### Using Docker-compose
 
  we will run application docker  with script its docker compose. to use it follow script below
  
@@ -143,6 +145,121 @@ to use docker compose run
 ```shell
 docker compose up -d
 ```
+
+
+# Backend
+
+Backend Repository :  https://github.com/KazamiHazaki/be-dumbmerch
+
+what we need for this backend 
+
+- postgresql
+- golang
+
+how to use backend?
+
+```shell
+copy .env-example .env
+```
+
+change `DB_` value as you want.
+
+after golang and posgresql isntalled. run backend 
+
+```shell
+go run main.go
+```
+
+after run `main.go` if connection DB in `.env` correct and postgresql already run, database will automate migrate from `main.go`.
+
+
+Dockerize backend 
+
+### Dockerfile
+
+for backend we have this dockerfile, this backend using golang, so we need install golang to container.
+
+```yaml
+
+FROM golang:1.18-alpine
+WORKDIR /app
+COPY . .
+RUN go build -o /dumbmerch
+EXPOSE 5000
+CMD [ "/dumbmerch" ]
+
+```
+build it 
+
+```shell
+docker build -t MY_IMAGE_BE:1 .
+```
+
+if you got error database migration when build. you need to run postgresql database first. 
+
+### Docker compose 
+
+after created images Backend, we can used it to docker compose. this script will install
+
+- postgresql
+- backend
+
+
+```yaml
+version: '3.8'
+
+services:
+  db:
+    container_name: dm-db
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: dumbmerch
+    ports:
+      - "5432:5432"
+    restart: always
+  go-be:
+    container_name: dm-be
+    image: dumb-be:1
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    restart: on-failure
+```
+
+on this docker compose we used `depends_on`, the database migration will wait until database services is created, and to avoid error when run backend, we adding restart policy `on-failure`. so if the golang backend is error its will automatic restart and retry to migration again until success.
+
+use 
+
+```shell
+docker compose up -d
+```
+
+to run images.
+
+if you found backend container error or keep restaring showing error like this. its because it can find database postgresql ,its not running or stopped  we need to run again container postgresql
+
+![image](https://user-images.githubusercontent.com/56806850/222936273-f0253bdc-ee29-4f17-8297-394e9a742dde.png).
+
+if you are check docker container, database is stopped  so backend golang will looping retry until its success. 
+
+![image](https://user-images.githubusercontent.com/56806850/222936372-120bf47b-7f75-4ac1-af0d-1debcfd87424.png)
+
+start again database 
+
+```shell
+docker start dm-db
+```
+
+after database run, backend will run with normal
+
+![image](https://user-images.githubusercontent.com/56806850/222936467-03a341d6-f4cb-4a3c-ad06-12438940837f.png)
+
+
+![image](https://user-images.githubusercontent.com/56806850/222936462-3c1ba4dd-221d-4512-800d-5808fc65b582.png)
+
 
 
 
