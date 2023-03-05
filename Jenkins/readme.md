@@ -79,8 +79,117 @@ and we can go to the next step create pipeline
 
 # Craete Pipeline
 
+to craete pipiline jenkins on github  wee need to create : 
+
+- Jenkinsfile
+- Config SSH key on github
+
+## Jenkinsfile
+
+to create jenkinsfile we need to place it in same folder fe-dumbmerch and be-dumbmerch. 
+
+we will create fe-dumbmerch first
+
+```shell
+
+def secret = 'aziz' # use your user credentials jenkins ID
+def server = 'user@ippublic'
+def directory = 'be-dumbmerch'
+def branch = 'master'
+def container = 'dm-db'
 
 
+pipeline{
+    agent any
 
+    stages{
+        stage ('delete & git pull'){
+            steps{
+                sshagent([secret]) {
+                    sh """ssh -tt -o StrictHostKeyChecking=no ${server} << EOF
+                    cd ${directory}
+                    docker-compose stop ${container}
+                    docker container prune -f
+                    git pull origin ${branch}
+                    exit
+                    EOF"""
+                }
+            }
+        }
+        stage ('dockerize app'){
+            steps{
+                sshagent([secret]) {
+                    sh """ssh -tt -o StrictHostKeyChecking=no ${server} << EOF
+                    cd ${directory}
+                    docker build -t kazamisei98/dumbmerch-be-slim:0.1 .
+                    exit
+                    EOF"""
+                }
+            }
+        }
+        stage ('deploy app '){
+            steps{
+                sshagent([secret]) {
+                    sh """ssh -tt -o StrictHostKeyChecking=no ${server} << EOF
+                    cd ${directory}
+                    docker-compose up -d
+                    exit
+                    EOF"""
+                }
+            }
+        }
+
+           stage ('upload image to dockerhub '){
+            steps{
+                sshagent([secret]) {
+                    sh """ssh -tt -o StrictHostKeyChecking=no ${server} << EOF
+                    cd ${directory}
+                    docker push kazamisei98/dumbmerch-be-slim:0.1
+                    exit
+                    EOF"""
+                }
+            }
+        }
+
+    }
+}
+```
+
+on these pipeline we have 4 stages
+- delete & git pull
+- dockerize app
+- deploy app
+- push image docker 
+
+after we created jenkinsfile we can push it to our repository 
+
+- https://github.com/KazamiHazaki/fe-dumbmerch
+
+after push it to repository we will add ssh key to github.
+
+go to [settings](https://github.com/settings/keys) and New SSH Key
+
+and add your public ssh key same as added to jenkins  user
+
+![image](https://user-images.githubusercontent.com/56806850/222937970-e44a8f82-225b-4ea5-abb3-8e197e5bfbf4.png)
+
+and we can create pipeline now
+
+![image](https://user-images.githubusercontent.com/56806850/222938151-9003ec4b-a346-4f1b-9a88-b0c459a15695.png)
+
+on build triggers check github hook for auto build with commit github
+
+![Screenshot 2023-03-05 at 09 22 25](https://user-images.githubusercontent.com/56806850/222938267-e2a331f2-4f97-46f5-acca-51f8ec55d0ea.png)
+
+and for the pipeline change definition with `Pipeline script from SCM`, SCM use git, use git repository SSH, and credentials we created before. and change 
+branch specified branch `*/master`and save.
+
+![image](https://user-images.githubusercontent.com/56806850/222938335-307ebe0b-860b-4136-9f82-dae84548ad98.png)
+
+and we can test  build now 
+
+![image](https://user-images.githubusercontent.com/56806850/222938452-26cc3e78-c6b9-45b5-b885-91d686ed0e19.png)
+
+all stage is success no error.
 
 
