@@ -91,4 +91,9 @@ we will make other alert  like RAM alert and Disk alert
 (node_filesystem_size_bytes{job="appserver-exporter", fstype="ext4"} / 1073741824) - (node_filesystem_free_bytes{job="appserver-exporter", fstype="ext4"} / 1073741824) 
 ```
 
+and change notification policies to discord contact point 
+
+![image](https://user-images.githubusercontent.com/56806850/222944842-20af206c-1e8f-4455-b297-52bf0c542135.png)
+
+and alerting ready to set. you can check to discord if the value is above C conditional alert its will trigger and send notification to discord
 
