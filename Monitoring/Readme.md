@@ -38,4 +38,47 @@ and import your dashboard
 
 ## Alerting
 
+for alerting we will make alert to discord first we craete contact points and choose discord
+
+![image](https://user-images.githubusercontent.com/56806850/222944054-bb527816-b423-4ea7-b6a9-5f77655be55c.png)
+
+![image](https://user-images.githubusercontent.com/56806850/222944063-fad307a1-a4c5-416e-a740-427532bd03ee.png)
+
+and copy paste your discord webhook  to grafana contact points webhook
+
+![image](https://user-images.githubusercontent.com/56806850/222944128-d2b6d258-3a94-4308-aeb4-ac8fe86f4189.png)
+
+and you can test your webhook notification 
+
+![image](https://user-images.githubusercontent.com/56806850/222944177-4d82d9e0-0817-4955-b7f9-6fc67e804e75.png)
+
+
+## Create alert Query
+
+so after create contact type we can create alert in grafana with PromQuery
+
+first go to alert -> create new alert 
+
+![image](https://user-images.githubusercontent.com/56806850/222944343-276719fb-9228-4a0e-bb94-2672ff6845ae.png)
+
+and fill Prom query
+
+`CPU Alert`
+```shell
+(sum by(instance) (irate(node_cpu_seconds_total{instance="103.67.186.181:9100", job="appserver-exporter", mode!="idle"}[$__rate_interval])) * 100) / on(instance) sum by(instance) (irate(node_cpu_seconds_total{instance="103.67.186.181:9100", job="appserver-exporter"}[$__rate_interval]))
+```
+![image](https://user-images.githubusercontent.com/56806850/222944370-a66522b6-a5fa-4f02-9f36-179f762e7c19.png)
+
+on C query we will make it as condition alert so if B > 4 alert will trigger 
+
+![image](https://user-images.githubusercontent.com/56806850/222944676-c443781a-3ca1-4d26-8928-4a79abeba454.png)
+
+ then save with name alert cpu-alert
+
+![image](https://user-images.githubusercontent.com/56806850/222944446-6d6dc092-c018-4a5a-87e7-2b7cedfefbd0.png)
+
+
+
+
+
 
