@@ -40,7 +40,8 @@ to disabled go to ssh config
 
 ```
 sudo nano /etc/ssh/sshd_config
-``
+```
+
 ![image](https://user-images.githubusercontent.com/56806850/223008856-4a30e1b4-c3f2-40c6-b882-3bfbae7db608.png)
 
 
