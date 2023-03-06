@@ -1,0 +1,6 @@
+- Enabled server Firewall
+- disable ssh password login
+- disable root login
+- enable ssh login using pubkey
+- ssh time out false passsword login
+-
