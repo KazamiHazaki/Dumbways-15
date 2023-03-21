@@ -10,3 +10,9 @@ example for kube packages
 ```shell
 wget -O - https://raw.githubusercontent.com/KazamiHazaki/Dumbways-15/main/minikube/kube_packages.sh | bash
 ```
+
+
+
+Deploying a Simple Service to Kubernetes
+
+
