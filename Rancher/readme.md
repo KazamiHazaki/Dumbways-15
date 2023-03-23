@@ -6,3 +6,6 @@ docker run -d --restart=unless-stopped \
   --privileged \
   rancher/rancher:latest
   ```
+
+
+![image](https://user-images.githubusercontent.com/56806850/227108864-0febcfc2-4b68-48e4-9016-194770ff0183.png)
